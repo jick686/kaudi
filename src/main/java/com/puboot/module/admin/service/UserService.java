@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author Linzhaoguan
+ * @author wjz
  * @version V1.0
- * @date 2019年9月11日
+ * @date 2020.4.25
  */
 public interface UserService extends IService<User> {
 
