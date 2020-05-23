@@ -43,6 +43,11 @@ public class CommentController {
         return ResultUtil.table(commentPage.getRecords(), commentPage.getTotal());
     }
 
+    /**
+     * 回复评论  保存到数据库
+     * @param comment
+     * @return
+     */
     @PostMapping("/reply")
     public ResponseVo edit(BizComment comment) {
         completeComment(comment);
@@ -54,6 +59,11 @@ public class CommentController {
         }
     }
 
+    /**
+     * 删除评论 单条
+     * @param id
+     * @return
+     */
     @PostMapping("/delete")
     public ResponseVo delete(Integer id) {
         Integer[] ids = {id};
@@ -65,6 +75,11 @@ public class CommentController {
         }
     }
 
+    /**
+     * 删除多条评论
+     * @param ids
+     * @return
+     */
     @PostMapping("/batch/delete")
     public ResponseVo deleteBatch(@RequestParam("ids[]") Integer[] ids) {
         int i = commentService.deleteBatch(ids);
@@ -75,6 +90,12 @@ public class CommentController {
         }
     }
 
+    /**
+     * 审核
+     * @param bizComment
+     * @param replyContent
+     * @return
+     */
     @PostMapping("/audit")
     public ResponseVo audit(BizComment bizComment, String replyContent) {
         try {

@@ -31,7 +31,13 @@ public class OnlineUserController {
 
     private final UserService userService;
 
-    // 在线用户列表
+    /**
+     * 在线用户列表
+     * @param user
+     * @param pageNumber
+     * @param pageSize
+     * @return
+     */
     @PostMapping("/list")
     @ResponseBody
     public PageResultVo onlineUsers(UserOnlineVo user, Integer pageNumber, Integer pageSize) {
@@ -40,7 +46,12 @@ public class OnlineUserController {
         return ResultUtil.table(userList.subList((pageNumber - 1) * pageSize, endIndex), (long) userList.size());
     }
 
-    // 强制踢出用户
+    /**
+     * 强制踢出用户
+     * @param sessionId
+     * @param username
+     * @return
+     */
     @PostMapping("/kickout")
     @ResponseBody
     public ResponseVo kickout(String sessionId, String username) {
@@ -55,7 +66,11 @@ public class OnlineUserController {
         }
     }
 
-    // 批量强制踢出用户
+    /**
+     * 批量强制踢出用户
+     * @param sessions
+     * @return
+     */
     @PostMapping("/batch/kickout")
     @ResponseBody
     public ResponseVo kickout(@RequestBody List<UserSessionVo> sessions) {

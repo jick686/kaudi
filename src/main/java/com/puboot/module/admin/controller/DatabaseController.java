@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 后台SQL监控
+ * 后台SQL监控  点击按钮跳转到SQL.HTML页面
  *
  * @author Linzhaoguan
  * @version V1.0

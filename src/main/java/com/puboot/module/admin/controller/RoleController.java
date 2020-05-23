@@ -43,7 +43,13 @@ public class RoleController {
     private final MyShiroRealm myShiroRealm;
 
 
-    /*角色列表数据*/
+    /**
+     * 角色列表数据
+     * @param role
+     * @param pageNumber
+     * @param pageSize
+     * @return
+     */
     @PostMapping("/list")
     @ResponseBody
     public PageResultVo pageRoles(Role role, Integer pageNumber, Integer pageSize) {
@@ -56,7 +62,11 @@ public class RoleController {
         }
     }
 
-    /*新增角色*/
+    /**
+     * 新增角色
+     * @param role
+     * @return
+     */
     @PostMapping("/add")
     @ResponseBody
     public ResponseVo addRole(Role role) {
@@ -73,7 +83,11 @@ public class RoleController {
         }
     }
 
-    /*删除角色*/
+    /**
+     * 删除角色
+     * @param roleId
+     * @return
+     */
     @GetMapping("/delete")
     @ResponseBody
     public ResponseVo deleteRole(String roleId) {
@@ -89,7 +103,11 @@ public class RoleController {
         }
     }
 
-    /*批量删除角色*/
+    /**
+     * 批量删除角色
+     * @param roleIdStr
+     * @return
+     */
     @GetMapping("/batch/delete")
     @ResponseBody
     public ResponseVo batchDeleteRole(String roleIdStr) {
@@ -106,7 +124,12 @@ public class RoleController {
         }
     }
 
-    /*编辑角色详情*/
+    /**
+     * 编辑角色详情
+     * @param model
+     * @param id
+     * @return
+     */
     @GetMapping("/edit")
     public String detail(Model model, Integer id) {
         Role role = roleService.findById(id);
@@ -114,7 +137,11 @@ public class RoleController {
         return CoreConst.ADMIN_PREFIX + "role/detail";
     }
 
-    /*编辑角色*/
+    /**
+     * 编辑角色
+     * @param role
+     * @return
+     */
     @PostMapping("/edit")
     @ResponseBody
     public ResponseVo editRole(@ModelAttribute("role") Role role) {
@@ -126,7 +153,11 @@ public class RoleController {
         }
     }
 
-    /*分配权限列表查询*/
+    /**
+     * 分配权限列表查询
+     * @param roleId
+     * @return
+     */
     @PostMapping("/assign/permission/list")
     @ResponseBody
     public List<PermissionTreeListVo> assignRole(String roleId) {
@@ -152,7 +183,12 @@ public class RoleController {
     }
 
 
-    /*分配权限*/
+    /**
+     * 分配权限
+     * @param roleId
+     * @param permissionIdStr
+     * @return
+     */
     @PostMapping("/assign/permission")
     @ResponseBody
     public ResponseVo assignRole(String roleId, String permissionIdStr) {

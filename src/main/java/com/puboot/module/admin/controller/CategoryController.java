@@ -9,6 +9,7 @@ import com.puboot.module.admin.service.BizCategoryService;
 import com.puboot.module.admin.vo.base.ResponseVo;
 import lombok.AllArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ import java.util.List;
 
 /**
  * 后台类目管理
- *
+ *  AllArgsConstructor这个注解加上之后可以省去Autowired注解
  * @author Linzhaoguan
  * @version V1.0
  * @date 2019年9月11日

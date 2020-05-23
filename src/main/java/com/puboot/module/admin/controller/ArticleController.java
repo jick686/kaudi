@@ -52,7 +52,11 @@ public class ArticleController {
         return ResultUtil.table(articleList, page.getTotal());
     }
 
-    /*文章*/
+    /**
+     * 获取文章列表
+     * @param model
+     * @return
+     */
     @GetMapping("/add")
     public String addArticle(Model model) {
         BizCategory bizCategory = new BizCategory();
@@ -64,6 +68,12 @@ public class ArticleController {
         return CoreConst.ADMIN_PREFIX + "article/publish";
     }
 
+    /**
+     * 新增文章
+     * @param bizArticle
+     * @param tag
+     * @return
+     */
     @PostMapping("/add")
     @ResponseBody
     public ResponseVo add(BizArticle bizArticle, Integer[] tag) {
@@ -79,6 +89,12 @@ public class ArticleController {
         }
     }
 
+    /**
+     * 修改文章
+     * @param model
+     * @param id
+     * @return
+     */
     @GetMapping("/edit")
     public String edit(Model model, Integer id) {
         BizArticle bizArticle = articleService.selectById(id);
@@ -145,6 +161,11 @@ public class ArticleController {
         }
     }
 
+    /**
+     * 推送文章
+     * @param urls
+     * @return
+     */
     @PostMapping("/batch/push")
     @ResponseBody
     public ResponseVo pushBatch(@RequestParam("urls[]") String[] urls) {

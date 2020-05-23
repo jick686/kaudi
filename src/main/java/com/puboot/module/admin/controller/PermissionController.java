@@ -38,7 +38,9 @@ public class PermissionController {
     private final ShiroService shiroService;
 
 
-    /*权限列表数据*/
+    /**
+     * 权限列表数据
+     */
     @PostMapping("/list")
     @ResponseBody
     public List<Permission> loadPermissions(String flag) {
@@ -51,7 +53,11 @@ public class PermissionController {
         return permissionListList;
     }
 
-    /*添加权限*/
+    /**
+     * 添加权限
+     * @param permission
+     * @return
+     */
     @ResponseBody
     @PostMapping("/add")
     public ResponseVo addPermission(Permission permission) {
@@ -69,7 +75,11 @@ public class PermissionController {
         }
     }
 
-    /*删除权限*/
+    /**
+     * 删除权限
+     * @param permissionId
+     * @return
+     */
     @ResponseBody
     @PostMapping("/delete")
     public ResponseVo deletePermission(String permissionId) {
@@ -91,7 +101,12 @@ public class PermissionController {
         }
     }
 
-    /*权限详情*/
+    /**
+     * 权限详情
+     * @param model
+     * @param permissionId
+     * @return
+     */
     @GetMapping("/edit")
     public String detail(Model model, String permissionId) {
         Permission permission = permissionService.findByPermissionId(permissionId);
@@ -110,7 +125,11 @@ public class PermissionController {
         return CoreConst.ADMIN_PREFIX + "permission/detail";
     }
 
-    /*编辑权限*/
+    /**
+     * 编辑权限
+     * @param permission
+     * @return
+     */
     @ResponseBody
     @PostMapping("/edit")
     public ResponseVo editPermission(@ModelAttribute("permission") Permission permission) {

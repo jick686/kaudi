@@ -28,22 +28,31 @@ public class BizArticleServiceImpl extends ServiceImpl<BizArticleMapper, BizArti
 
     @Override
     public List<BizArticle> findByCondition(IPage<BizArticle> page, ArticleConditionVo vo) {
+        //获取数据
         List<BizArticle> list = bizArticleMapper.findByCondition(page, vo);
+        //check空
         if (CollectionUtils.isNotEmpty(list)) {
+            //创建新的数组
             List<Integer> ids = new ArrayList<>();
             for (BizArticle bizArticle : list) {
+                //循环之后把新的数组放到集合中
                 ids.add(bizArticle.getId());
             }
+            //根据IDS 查询
             List<BizArticle> listTag = bizArticleMapper.listTagsByArticleId(ids);
-            // listTag, 重新组装数据为{id: Article}
+            // listTag, 重新组装数据为{id: Article}   去重操作
             Map<Integer, BizArticle> tagMap = new LinkedHashMap<>(listTag.size());
             for (BizArticle bizArticle : listTag) {
                 tagMap.put(bizArticle.getId(), bizArticle);
             }
 
+            //获取对象
             for (BizArticle bizArticle : list) {
+                //通过ID获取map集合的对象
                 BizArticle tagArticle = tagMap.get(bizArticle.getId());
+                //对象进行非null check
                 if (Objects.nonNull(tagArticle)) {
+                    //如果不是null  设置标签
                     bizArticle.setTags(tagArticle.getTags());
                 }
             }
