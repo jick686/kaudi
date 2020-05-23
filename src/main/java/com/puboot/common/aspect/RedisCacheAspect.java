@@ -30,12 +30,22 @@ public class RedisCacheAspect {
     @Autowired
     private RedisService redisService;
 
+    /**
+     * 注解切入点   当引用这个注解之后需要执行的操作
+     */
     @Pointcut("@annotation(com.puboot.common.annotation.Cache)")
     public void pointcut() {
     }
 
+    /**
+     * 环绕通知
+     * @param point
+     * @return
+     * @throws Throwable
+     */
     @Around("pointcut()")
     public Object handle(ProceedingJoinPoint point) throws Throwable {
+        //获取当前切面执行方法的方法名
         Method currentMethod = AspectUtil.getMethod(point);
         //获取类方法上的@RedisCache注解
         Cache cache = currentMethod.getAnnotation(Cache.class);
