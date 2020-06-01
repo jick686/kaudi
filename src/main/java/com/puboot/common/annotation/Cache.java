@@ -10,9 +10,9 @@ import java.util.concurrent.TimeUnit;
  * @version V1.0
  * @date 2019年9月11日
  */
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Inherited
+@Target({ElementType.METHOD}) //标明注解可作用的地方 FIELD--字段  METHOD--方法
+@Retention(RetentionPolicy.RUNTIME) //存活阶段 RUNTIME 运行时   还有JVM Class
+@Inherited //可继承
 public @interface Cache {
 
     /**
