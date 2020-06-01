@@ -9,7 +9,7 @@ import java.util.Properties;
 
 /**
  * 验证码配置
- *
+ * 使用@Bean注解就不需要使用配置文件了   可以使用@Bean创建配置类
  * @author LinZhaoguan
  * @version V1.0
  * @date 2019年9月11日

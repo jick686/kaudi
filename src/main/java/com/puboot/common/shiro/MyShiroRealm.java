@@ -37,6 +37,7 @@ import java.util.Set;
 /**
  * 自定义shiro realm，进行鉴权和认证
  *
+ *  Lazy这个注解: Bean在第一次使用的时候创建  作用也是为了Spring容器更快的启动
  * @author LinZhaoguan
  * @version V1.0
  * @date 2019年9月11日
