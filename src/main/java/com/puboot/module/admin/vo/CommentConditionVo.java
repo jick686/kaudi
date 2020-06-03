@@ -1,8 +1,6 @@
 package com.puboot.module.admin.vo;
 
-import com.puboot.module.admin.vo.base.BaseConditionVo;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * @author Linzhaoguan

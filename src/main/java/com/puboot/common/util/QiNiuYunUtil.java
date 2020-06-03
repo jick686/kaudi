@@ -1,6 +1,5 @@
 package com.puboot.common.util;
 
-import com.alibaba.fastjson.JSON;
 import com.puboot.module.admin.vo.CloudStorageConfigVo;
 import com.puboot.module.admin.vo.base.ResponseVo;
 import com.qiniu.common.QiniuException;
@@ -9,7 +8,6 @@ import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.BatchStatus;
-import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
