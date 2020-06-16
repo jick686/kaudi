@@ -31,9 +31,9 @@ public class CloudStorageConfigVo {
     //阿里云绑定的域名
     private String aliyunDomain = "";
     //阿里云路径前缀
-    private String aliyunPrefix = "file";
+    private String aliyunPrefix = "";
     //阿里云EndPoint
-    private String aliyunEndPoint = "oss-cn-hangzhou.aliyuncs.com";
+    private String aliyunEndPoint = "";
     //阿里云AccessKeyId
     private String aliyunAccessKeyId = "";
     //阿里云AccessKeySecret

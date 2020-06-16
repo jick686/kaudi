@@ -36,24 +36,33 @@ public class OssServiceImpl implements OssService {
     @Override
     @SneakyThrows
     public UploadResponse upload(MultipartFile file) {
+        //判断文件是否为null
         if (file == null || file.isEmpty()) {
+            //抛出异常在枚举中(不使用魔法值)
             throw new UploadFileNotFoundException(UploadResponse.ErrorEnum.FILE_NOT_FOUND.msg);
         }
+        //获取原始文件名
         String originalFilename = file.getOriginalFilename();
+        //获取后缀名
         String suffix = originalFilename.substring(originalFilename.lastIndexOf('.')).toLowerCase();
+        //获取云存储配置
         String value = sysConfigService.selectAll().get(SysConfigKey.CLOUD_STORAGE_CONFIG.getValue());
+        //将配置转换为对象
         CloudStorageConfigVo cloudStorageConfig = JSON.parseObject(value, CloudStorageConfigVo.class);
 
+        //将数据流进行MD5加密
         String md5 = MD5.getMessageDigest(file.getBytes());
         String dir;
         String filePath;
         String domain;
         String url = null;
         ResponseVo<?> responseVo;
+        //不同云配置执行不同代码
         switch (cloudStorageConfig.getType()) {
             case CoreConst.UPLOAD_TYPE_QINIUYUN:
                 domain = cloudStorageConfig.getQiniuDomain();
                 dir = cloudStorageConfig.getQiniuPrefix();
+                //路径名
                 filePath = String.format("%1$s/%2$s%3$s", dir, md5, suffix);
                 responseVo = QiNiuYunUtil.uploadFile(cloudStorageConfig, filePath, file.getBytes());
                 url = String.format("%1$s/%2$s", domain, filePath);
