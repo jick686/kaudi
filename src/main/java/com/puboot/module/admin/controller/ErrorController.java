@@ -57,6 +57,7 @@ public class ErrorController {
     }
 
     private void getSysConfig(Model model) {
+        //测试提交
         Map<String, String> map = sysConfigService.selectAll();
         model.addAttribute("sysConfig", map);
         BizCategory bizCategory = new BizCategory();
