@@ -43,27 +43,6 @@ public class Run {
         b.start();
         c.start();
         d.start();
-        //常用方法
-
-        //返回对当前正在执行的线程对象的引用
-        Thread thread = MyThread.currentThread();
-        System.out.println("当前线程的引用: " + thread.getName());
-
-        //返回此线程的标识符
-        long id = thread.getId();
-        System.out.println("标识符: " + id);
-
-        //返回此线程的名称
-        String name = thread.getName();
-        System.out.println("名称: " + name);
-
-        //返回此线程的优先级
-        int priority = thread.getPriority();
-        System.out.println("优先级: " + priority);
-
-        //返回此线程是否处于活动状态
-        boolean alive = thread.isAlive();
-        System.out.println("活动状态 " + alive);
 
     }
 
